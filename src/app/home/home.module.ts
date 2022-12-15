@@ -5,15 +5,20 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-
+import { IonVideoPlayerModule } from 'ion-video-player';
+import { IonCelebrationModule } from 'ion-celebration';
+import { IonRatingStarsModule } from 'ion-rating-stars';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    IonVideoPlayerModule,
+    IonCelebrationModule,
+    IonRatingStarsModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: []
 })
-export class HomePageModule {}
+export class HomePageModule { }

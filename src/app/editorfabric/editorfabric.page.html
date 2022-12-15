@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <ion-title>Editor Fabricjs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="div-container" (dragover)="allowDrop($event)" (drop)="dropElement($event)">
+    <canvas #htmlCanvas id="canvas"></canvas>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3">
+        <ion-item>
+          <ion-label position="floating">Canvas Width</ion-label>
+          <ion-input [(ngModel)]="size.width" (ionChange)="changeSize()" placeholder="Enter Width"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="3">
+        <ion-item>
+          <ion-label position="floating">Canvas Height</ion-label>
+          <ion-input [(ngModel)]="size.height" (ionChange)="changeSize()" placeholder="Enter Height"></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="6">
+        <ion-item>
+          <ion-label position="stacked">Drawing Mode</ion-label>
+          <ion-toggle slot="end" (ionChange)="changeDrawingMode($event)"></ion-toggle>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-button color="danger" fill="outline" mode="ios" (click)="removeSelected()">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+        <ion-button color="success" fill="outline" mode="ios" (click)="cloneObjects()">
+          <ion-icon name="copy-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="10">
+        <ion-item>
+          <ion-label position="floating">Add Text</ion-label>
+          <ion-input placeholder="Enter Text on Canvas" [(ngModel)]="canvasTextString"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button fill="outline" color="success" mode="ios" (click)="addText()">
+          <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="img_cont">
+    <img class="img" id="ele1" draggable="true" (dragstart)="dragElement($event)"
+      src="https://webkit.org/wp-content/uploads/STP-300x300.png">
+    <img class="img" id="ele2" draggable="true" (dragstart)="dragElement($event)"
+      src="https://webkit.org/wp-content/uploads/ephy-webkit-graphic.png">
+    <img class="img" id="ele3" draggable="true" (dragstart)="dragElement($event)"
+      src="https://res.cloudinary.com/css-tricks/image/upload/w_600,q_auto,f_auto/buysellads/uu/7/112766/1646327381-MC_CSSTricks_Logo_600x600-_1_.png">
+    <img class="img" id="ele4" draggable="true" (dragstart)="dragElement($event)"
+      src="https://miro.medium.com/max/1400/1*9hd_8qR0CMZ8L0pVbFLjDw.png">
+  </div>
+
+
+
+</ion-content>

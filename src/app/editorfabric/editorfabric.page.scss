@@ -1,0 +1,11 @@
+canvas{
+    border: 2px solid lightgrey;
+}
+
+.img_cont{
+    img{
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+    }
+}

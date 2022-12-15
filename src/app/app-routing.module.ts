@@ -8,8 +8,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'editorfabric',
     pathMatch: 'full'
+  },
+  {
+    path: 'editorfabric',
+    loadChildren: () => import('./editorfabric/editorfabric.module').then( m => m.EditorfabricPageModule)
   },
 ];
 
