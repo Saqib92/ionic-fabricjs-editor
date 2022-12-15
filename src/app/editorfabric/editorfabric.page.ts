@@ -103,6 +103,99 @@ export class EditorfabricPage implements OnInit {
     }
   }
 
+  //add background Image
+  addBackgroud(e: any) {
+    //   const self = this;
+    //   fabric.Image.fromURL(data, function(img) {
+    //     // add background image
+    //     self.canvas.setBackgroundImage(img, self.canvas.renderAll.bind(self.canvas), {
+    //        scaleX: self.canvas.width / img.width,
+    //        scaleY: self.canvas.height / img.height
+    //     });
+    //  });
+    let file = e.target.files[0];
+    var reader = new FileReader();
+    reader.onload = (f: any) => {
+      var data = f.target.result;
+      fabric.Image.fromURL(data, (img: any) => {
+        // add background image
+        this.canvas.setBackgroundImage(img, this.canvas.renderAll.bind(this.canvas), {
+          scaleX: this.canvas.width / img.width,
+          scaleY: this.canvas.height / img.height
+        });
+      });
+    };
+    reader.readAsDataURL(file);
+  }
+
+  getImgPolaroid(event: any) {
+    const el = event.target;
+    let sp = el.src.split('.')[1]
+    if (sp == 'svg') {
+      this.loadSVG(el.src);
+    } else {
+      this.loadPNG(el)
+    }
+  }
+
+  loadSVG(src: string) {
+    fabric.loadSVGFromURL(src, (objects: any, options: any) => {
+      const image = fabric.util.groupSVGElements(objects, options);
+      image.set({
+        left: 10,
+        top: 10,
+        angle: 0,
+        padding: 10,
+        cornerSize: 10,
+        hasRotatingPoint: true,
+      });
+      this.extend(image, this.randomId());
+      this.canvas.add(image);
+      this.selectItemAfterAdded(image);
+    });
+  }
+
+  loadPNG(imgs: any) {
+    let imag: any = imgs; //getting the target image info through its id. 
+    let img = new fabric.Image(imag, { //initializing the fabric image.
+      left: 10,  //positioning the target on exact position of mouse event drop through event.layerX,Y.
+      top: 10,
+    });
+    img.scaleToWidth(imag.width); //scaling the image height and width with target height and width, scaleToWidth, scaleToHeight fabric inbuilt function. 
+    img.scaleToHeight(imag.height);
+    this.canvas.add(img);
+    this.selectItemAfterAdded(img);
+  }
+
+  //Drag n Drop start
+  // allowDrop function called on ondragover event.
+  allowDrop(e: any) {
+    e.preventDefault();
+  }
+
+  //dragElement function called on ondrag event.
+  dragElement(e: any) {
+    e.dataTransfer.setData("id", e.target.id); //transfer the "data" i.e. id of the target dragged.
+  }
+
+  //dropElement function called on ondrop event.
+  dropElement(e: any) {
+    e.preventDefault();
+    let data = e.dataTransfer.getData("id"); //receiving the "data" i.e. id of the target dropped.
+    let imag: any = document.getElementById(data); //getting the target image info through its id. 
+    let img = new fabric.Image(imag, { //initializing the fabric image.
+      left: e.layerX - 80,  //positioning the target on exact position of mouse event drop through event.layerX,Y.
+      top: e.layerY - 40,
+    });
+    img.scaleToWidth(imag.width); //scaling the image height and width with target height and width, scaleToWidth, scaleToHeight fabric inbuilt function. 
+    img.scaleToHeight(imag.height);
+    this.canvas.add(img);
+
+
+  }
+  //Drag n Drop End
+
+
   extend(obj: any, id: any) {
     obj.toObject = ((toObject) => {
       return () => {
@@ -122,34 +215,5 @@ export class EditorfabricPage implements OnInit {
     this.canvas.setActiveObject(obj);
   }
 
-  //Drag n Drop start
-  // allowDrop function called on ondragover event.
-  allowDrop(e: any) {
-    e.preventDefault();
-  }
-  
-  //dragElement function called on ondrag event.
-  dragElement(e: any) {
-    console.log(e)
-    e.dataTransfer.setData("id", e.target.id); //transfer the "data" i.e. id of the target dragged.
-  }
-
-  //dropElement function called on ondrop event.
-  dropElement(e: any) {
-    e.preventDefault();
-    let data = e.dataTransfer.getData("id"); //receiving the "data" i.e. id of the target dropped.
-    let imag: any = document.getElementById(data); //getting the target image info through its id. 
-    let img = new fabric.Image(imag, { //initializing the fabric image.
-      left: e.layerX - 80,  //positioning the target on exact position of mouse event drop through event.layerX,Y.
-      top: e.layerY - 40,
-    });
-    img.scaleToWidth(imag.width); //scaling the image height and width with target height and width, scaleToWidth, scaleToHeight fabric inbuilt function. 
-    img.scaleToHeight(imag.height);
-    this.canvas.add(img);
-
-
-  }
-
-  //Drag n Drop End
 
 }

@@ -56,17 +56,29 @@
         </ion-button>
       </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label stacked="floating">Add Background</ion-label>
+          <ion-input placeholder="Upload Image" type="file" (change)="addBackgroud($event)"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 
   <div class="img_cont">
-    <img class="img" id="ele1" draggable="true" (dragstart)="dragElement($event)"
-      src="https://webkit.org/wp-content/uploads/STP-300x300.png">
-    <img class="img" id="ele2" draggable="true" (dragstart)="dragElement($event)"
-      src="https://webkit.org/wp-content/uploads/ephy-webkit-graphic.png">
-    <img class="img" id="ele3" draggable="true" (dragstart)="dragElement($event)"
-      src="https://res.cloudinary.com/css-tricks/image/upload/w_600,q_auto,f_auto/buysellads/uu/7/112766/1646327381-MC_CSSTricks_Logo_600x600-_1_.png">
-    <img class="img" id="ele4" draggable="true" (dragstart)="dragElement($event)"
+    <img class="img" id="ele1" draggable="true" (dragstart)="dragElement($event)" (click)="getImgPolaroid($event)"
+      src="assets/imgs/airplane-outline.svg">
+    <img class="img" id="ele2" draggable="true" (dragstart)="dragElement($event)" (click)="getImgPolaroid($event)"
+      src="assets/imgs/shapes.svg">
+    <img class="img" id="ele3" draggable="true" (dragstart)="dragElement($event)" (click)="getImgPolaroid($event)"
+      src="assets/imgs/img2.jpg">
+    <img class="img" id="ele4" draggable="true" (dragstart)="dragElement($event)" (click)="getImgPolaroid($event)"
+      src="assets/imgs/img3.jpg">
+    <img class="img" id="ele5" draggable="true" (dragstart)="dragElement($event)" (click)="getImgPolaroid($event)"
       src="https://miro.medium.com/max/1400/1*9hd_8qR0CMZ8L0pVbFLjDw.png">
+    <img class="img" id="ele6" draggable="true" (dragstart)="dragElement($event)" (click)="getImgPolaroid($event)"
+      src="assets/imgs/svg1.svg">
   </div>
 
 
