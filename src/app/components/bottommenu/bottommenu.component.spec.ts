@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { StandaloneTestComponent } from './standalone-test.component';
+import { BottommenuComponent } from './bottommenu.component';
 
-describe('StandaloneTestComponent', () => {
-  let component: StandaloneTestComponent;
-  let fixture: ComponentFixture<StandaloneTestComponent>;
+describe('BottommenuComponent', () => {
+  let component: BottommenuComponent;
+  let fixture: ComponentFixture<BottommenuComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ StandaloneTestComponent ],
+      declarations: [ BottommenuComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(StandaloneTestComponent);
+    fixture = TestBed.createComponent(BottommenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

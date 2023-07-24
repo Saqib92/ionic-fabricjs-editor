@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { EditorfabricPageRoutingModule } from './editorfabric-routing.module';
 
 import { EditorfabricPage } from './editorfabric.page';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    ComponentsModule,
     EditorfabricPageRoutingModule
   ],
   declarations: [EditorfabricPage]

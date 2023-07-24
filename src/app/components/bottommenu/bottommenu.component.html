@@ -1,0 +1,24 @@
+<div class="open-close-btn"
+  [ngClass]="{'open': bottom_menu_bar}">
+  <ion-button fill="clear" mode="ios" color="dark" (click)="bottom_menu_bar = !bottom_menu_bar">
+    <ion-icon slot="icon-only" color="light" [name]="!bottom_menu_bar ? 'add-outline' : 'remove-outline'"></ion-icon>
+  </ion-button>
+</div>
+
+<div class="bottom-menu-bar" [ngStyle]="{'height' : bottom_menu_bar ? '120px' : '0'}">
+  <div>
+    My Bottom menu components with data and popovr button, Popover have Screenhsot button.
+  </div>
+
+  <div>
+    <ion-button (click)="presentPopover($event)">Open popover</ion-button>
+  </div>
+
+  <ion-popover #popover [isOpen]="isPopoverOpen" (didDismiss)="isPopoverOpen = false">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <ion-button (click)="onScreenShot()">Take Sreenshot</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-popover>
+</div>

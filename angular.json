@@ -33,7 +33,7 @@
               }
             ],
             "styles": ["src/theme/variables.scss", "src/global.scss"],
-            "scripts": []
+            "scripts": ["src/assets/js/DragDropTouch.js", "src/assets/js/fabric.min.js"]
           },
           "configurations": {
             "production": {

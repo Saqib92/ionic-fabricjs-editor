@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import 'fabric';
 declare const fabric: any;
+import { Screenshot } from 'capacitor-screenshot';
 
 @Component({
   selector: 'app-editorfabric',
@@ -213,6 +213,13 @@ export class EditorfabricPage implements OnInit {
   selectItemAfterAdded(obj: any) {
     this.canvas.discardActiveObject().renderAll();
     this.canvas.setActiveObject(obj);
+  }
+
+  takeScreenshot($event:any){
+    console.log($event);
+    Screenshot.take().then((ret: { base64: string }) => {
+      console.log(`data:image/png;base64,${ret.base64}`); // i am uoading base64 to server working on IOS. 
+    });
   }
 
 

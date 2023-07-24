@@ -16,6 +16,7 @@ def capacitor_pods
   pod 'CapacitorKeyboard', :path => '../../node_modules/@capacitor/keyboard'
   pod 'CapacitorStatusBar', :path => '../../node_modules/@capacitor/status-bar'
   pod 'CapgoCameraPreview', :path => '../../node_modules/@capgo/camera-preview'
+  pod 'CapacitorScreenshot', :path => '../../node_modules/capacitor-screenshot'
 end
 
 target 'App' do
